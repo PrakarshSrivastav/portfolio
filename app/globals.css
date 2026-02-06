@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.5% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Background animation */
+.animated-bg {
+  background: linear-gradient(135deg, rgba(65, 105, 225, 0.1), rgba(138, 43, 226, 0.1), rgba(30, 144, 255, 0.1));
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Floating sentence styling */
+.floating-element {
+  position: absolute;
+  opacity: 0.2;
+  animation-name: float, fadein;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.floating-code {
+  font-family: monospace;
+  font-size: 0.75rem;
+}
+
+/* Smooth float animation */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  75% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* Fade in/out effect */
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Floating code positions */
+.float-1 {
+  animation-duration: 15s;
+  top: 15%;
+  left: 10%;
+}
+
+.float-2 {
+  animation-duration: 20s;
+  top: 30%;
+  left: 70%;
+}
+
+.float-3 {
+  animation-duration: 18s;
+  top: 60%;
+  left: 20%;
+}
+
+.float-4 {
+  animation-duration: 22s;
+  top: 75%;
+  left: 60%;
+}
+
+.float-5 {
+  animation-duration: 25s;
+  top: 45%;
+  left: 40%;
+}
+
+.float-6 {
+  animation-duration: 17s;
+  top: 20%;
+  left: 85%;
+}
+
+.float-7 {
+  animation-duration: 19s;
+  top: 35%;
+  left: 80%;
+}
+
+.float-8 {
+  animation-duration: 21s;
+  top: 65%;
+  left: 15%;
+}
+
+.float-9 {
+  animation-duration: 23s;
+  top: 50%;
+  left: 50%;
+}
+
+/* Particles */
+.particle {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.particle-1 {
+  background-color: rgba(65, 105, 225, 0.3);
+}
+
+.particle-2 {
+  background-color: rgba(138, 43, 226, 0.3);
+}
+
+.particle-3 {
+  background-color: rgba(30, 144, 255, 0.3);
+}
