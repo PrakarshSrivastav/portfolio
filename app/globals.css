@@ -86,15 +86,6 @@
   pointer-events: none;
 }
 
-.hero-code-field::before {
-  content: "";
-  position: absolute;
-  inset: 8% 6%;
-  border-radius: 999px;
-  background: radial-gradient(circle at 50% 50%, rgba(65, 105, 225, 0.14), transparent 62%);
-  filter: blur(22px);
-}
-
 .hero-code-snippet {
   position: absolute;
   max-width: min(34ch, 44vw);
