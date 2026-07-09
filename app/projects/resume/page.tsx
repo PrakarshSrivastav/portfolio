@@ -8,7 +8,7 @@ import { ArrowLeft } from "lucide-react"
 export default function ResumePage() {
   // Redirect to PDF on page load
   useEffect(() => {
-    window.location.href = "/projects/resume-prakarsh-srivastava.pdf"
+    window.location.href = "/prakarsh_resume-2.pdf"
   }, [])
 
   return (
@@ -16,7 +16,7 @@ export default function ResumePage() {
       <h1 className="text-2xl font-bold mb-4">Redirecting to Resume...</h1>
       <p className="mb-8">If you are not redirected automatically, please click the button below:</p>
       <div className="flex gap-4">
-        <a href="/projects/resume-prakarsh-srivastava.pdf" target="_blank" rel="noopener noreferrer">
+        <a href="/prakarsh_resume-2.pdf" target="_blank" rel="noopener noreferrer">
           <Button>View Resume</Button>
         </a>
         <Link href="/">

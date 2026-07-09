@@ -1,19 +1,19 @@
 import ProjectDetail from "@/app/components/project-detail"
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
 import { getProjectBySlug } from "@/lib/projects"
+import { ArrowLeft } from "lucide-react"
+import Link from "next/link"
 import { notFound } from "next/navigation"
 
-export default function PremierLeagueStatsPage() {
-  const project = getProjectBySlug("premier-league-stats")
+export default function CardlePage() {
+  const project = getProjectBySlug("cardle")
 
   if (!project) {
     notFound()
   }
 
   return (
-    <div className="container max-w-screen-xl mx-auto py-12 px-4">
+    <div className="container mx-auto max-w-screen-xl px-4 py-12">
       <div className="mb-6">
         <Link href="/#projects">
           <Button variant="outline" size="sm" className="flex items-center gap-2">

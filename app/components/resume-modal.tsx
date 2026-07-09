@@ -19,7 +19,7 @@ export default function ResumeModal() {
             <DialogTitle>Prakarsh Srivastava - Resume</DialogTitle>
             <div className="flex items-center gap-2">
               <a
-                href="/resume-prakarsh-srivastava.pdf"
+                href="/prakarsh_resume-2.pdf"
                 download="Prakarsh_Srivastava_Resume.pdf"
                 className="flex items-center gap-1 text-sm text-blue-600 hover:underline"
                 onClick={(e) => e.stopPropagation()}
@@ -28,7 +28,7 @@ export default function ResumeModal() {
                 Download
               </a>
               <a
-                href="/resume-prakarsh-srivastava.pdf"
+                href="/prakarsh_resume-2.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 text-sm text-blue-600 hover:underline"
@@ -43,12 +43,12 @@ export default function ResumeModal() {
             </div>
           </DialogHeader>
           <div className="w-full h-full bg-gray-100 dark:bg-gray-800 overflow-auto">
-            <object data="/resume-prakarsh-srivastava.pdf" type="application/pdf" className="w-full h-full">
+            <object data="/prakarsh_resume-2.pdf" type="application/pdf" className="w-full h-full">
               <div className="flex flex-col items-center justify-center h-full p-6 text-center">
                 <p className="mb-4">Unable to display PDF. Please download or open in a new tab.</p>
                 <div className="flex gap-4">
                   <a
-                    href="/resume-prakarsh-srivastava.pdf"
+                    href="/prakarsh_resume-2.pdf"
                     download="Prakarsh_Srivastava_Resume.pdf"
                     className="flex items-center gap-1 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                   >
@@ -56,7 +56,7 @@ export default function ResumeModal() {
                     Download PDF
                   </a>
                   <a
-                    href="/resume-prakarsh-srivastava.pdf"
+                    href="/prakarsh_resume-2.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"

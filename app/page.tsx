@@ -1,261 +1,228 @@
-"use client"
-
+import CommandPalette from "@/app/components/command-palette"
+import ContactForm from "@/app/components/contact-form"
+import EditorialCard from "@/app/components/editorial-card"
+import GithubStats from "@/app/components/github-stats"
+import LeetCodeActivity from "@/app/components/leetcode-activity"
+import NowSection from "@/app/components/now-section"
+import ProjectCard from "@/app/components/project-card"
+import ScrollArrow from "@/app/components/scroll-arrow"
+import ScrollProgress from "@/app/components/scroll-progress"
+import SiteHeader from "@/app/components/site-header"
+import TechStack from "@/app/components/tech-stack"
+import VisitCounter from "@/app/components/visit-counter"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Mail, Download } from "lucide-react"
+import { editorials } from "@/lib/editorials"
+import { featuredProjects, otherProjects } from "@/lib/projects"
+import { Download, Github, Linkedin, Mail } from "lucide-react"
 import Link from "next/link"
-import ContactForm from "./components/contact-form"
-import ProjectCard from "./components/project-card"
-import TechStack from "./components/tech-stack"
-import { ThemeToggle } from "@/components/theme-toggle"
-import ScrollArrow from "./components/scroll-arrow"
-import EditorialCard from "./components/editorial-card"
+
+const heroSnippets = [
+  { text: 'api.get("/health")', className: "hero-code-1" },
+  { text: "SELECT * FROM projects", className: "hero-code-2" },
+  { text: "redis.set(cacheKey, payload)", className: "hero-code-3" },
+  { text: "@Query(nativeQuery = true)", className: "hero-code-4" },
+  { text: "CREATE INDEX idx_events_created_at", className: "hero-code-5" },
+  { text: "async def sync_telemetry():", className: "hero-code-6" },
+  { text: "WHERE status = 'active'", className: "hero-code-7" },
+  { text: "JOIN users ON users.id = sessions.user_id", className: "hero-code-8" },
+  { text: "jwt.verify(accessToken)", className: "hero-code-9" },
+  { text: "docker compose up --build", className: "hero-code-10" },
+  { text: "EXPLAIN ANALYZE SELECT", className: "hero-code-11" },
+  { text: "queue.publish('resume.parsed')", className: "hero-code-12" },
+  { text: "cache.ttl('neo-feed')", className: "hero-code-13" },
+]
 
 export default function Page() {
   return (
     <div className="min-h-screen bg-background animated-bg">
-      {/* Floating code snippets */}
-      <div className="floating-element floating-code float-1 text-primary">
-        function hello() &#123; return 'world' &#125;
-      </div>
-      <div className="floating-element floating-code float-2 text-primary">import React from 'react'</div>
-      <div className="floating-element floating-code float-3 text-primary">const [data, setData] = useState()</div>
-      <div className="floating-element floating-code float-4 text-primary">async function fetchData()</div>
-      <div className="floating-element floating-code float-5 text-primary">public static void main()</div>
-      <div className="floating-element floating-code float-6 text-primary">SELECT * FROM users</div>
-      <div className="floating-element floating-code float-7 text-primary">git commit -m 'fix'</div>
-      <div className="floating-element floating-code float-8 text-primary">console.log("debugging...")</div>
-      <div className="floating-element floating-code float-9 text-primary">pipeline.run('data_cleaning')</div>
+      <ScrollProgress />
+      <CommandPalette />
 
-      {/* Floating particles */}
-      <div className="floating-element particle particle-1 float-2"></div>
-      <div className="floating-element particle particle-2 float-3"></div>
-      <div className="floating-element particle particle-3 float-4"></div>
-      <div className="floating-element particle particle-1 float-5"></div>
-      <div className="floating-element particle particle-2 float-6"></div>
-      <div className="floating-element particle particle-3 float-1"></div>
-
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container max-w-screen-xl mx-auto flex h-14 items-center justify-between px-4">
-          <div className="flex items-center">
-            <Link className="mr-6 flex items-center space-x-2" href="/">
-              <span className="font-bold">PS</span>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-              <Link href="#about" className="transition-colors hover:text-foreground/80">
-                About
-              </Link>
-              <Link href="#editorial" className="transition-colors hover:text-foreground/80">
-                Editorial
-              </Link>
-              <Link href="#projects" className="transition-colors hover:text-foreground/80">
-                Projects
-              </Link>
-              <Link href="#contact" className="transition-colors hover:text-foreground/80">
-                Contact
-              </Link>
-            </nav>
-          </div>
-          <div className="flex items-center">
-            <ThemeToggle />
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main>
-          <section id="about" className="py-12 md:py-24 lg:py-32 relative min-h-[90vh]">
-    <div className="container max-w-screen-xl mx-auto px-4 relative">
-      {/* Center content */}
-      <div className="flex flex-col items-center justify-center space-y-4 text-center w-full md:pr-40">
-        <div className="space-y-2">
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-            Prakarsh Srivastava
-          </h1>
-          <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-            Solving real-world problems, one line of code at a time — focused on backend engineering
-            and data-driven systems.
-          </p>
-        </div>
+        <section
+          id="about"
+          className="relative isolate min-h-[calc(100svh-3.5rem)] overflow-hidden"
+        >
+          <div className="hero-code-field" aria-hidden="true">
+            {heroSnippets.map((snippet) => (
+              <span key={snippet.text} className={`hero-code-snippet ${snippet.className}`}>
+                {snippet.text}
+              </span>
+            ))}
+          </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4">
-  <Link href="https://github.com/PrakarshSrivastav" target="_blank">
-    <Button variant="outline" size="icon" aria-label="GitHub">
-      <Github className="h-4 w-4" />
-    </Button>
-  </Link>
+          <div className="container relative mx-auto grid min-h-[calc(100svh-3.5rem)] max-w-screen-xl content-center items-center gap-x-10 gap-y-8 px-4 pt-14 pb-36 md:pt-20 md:pb-40 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="hero-copy space-y-7">
+              <p className="font-mono text-sm font-semibold uppercase tracking-[0.22em] text-primary md:text-[0.95rem]">
+                Backend/Data Engineer
+              </p>
+              <div className="space-y-4">
+                <h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-[4.2rem] lg:leading-none xl:text-7xl">
+                  Prakarsh Srivastava
+                </h1>
+                <p className="max-w-2xl text-xl leading-8 text-muted-foreground md:text-[1.35rem]">
+                  I build backend systems, APIs, and data-driven products where correctness, state, and deployment
+                  details matter.
+                </p>
+              </div>
 
-  <Link href="https://www.linkedin.com/in/prakarsh-srivastava-2352412a7/" target="_blank">
-    <Button variant="outline" size="icon" aria-label="LinkedIn">
-      <Linkedin className="h-4 w-4" />
-    </Button>
-  </Link>
+              <div className="flex flex-wrap items-center gap-3">
+                <Link href="https://github.com/PrakarshSrivastav" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" size="icon" aria-label="GitHub">
+                    <Github className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="https://www.linkedin.com/in/prakarsh-srivastava-2352412a7/" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" size="icon" aria-label="LinkedIn">
+                    <Linkedin className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="mailto:prakarshsrivastava2004@gmail.com">
+                  <Button variant="outline" size="icon" aria-label="Email">
+                    <Mail className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/prakarsh_resume-2.pdf" download>
+                  <Button variant="outline" className="gap-2 whitespace-nowrap bg-transparent">
+                    <Download className="h-4 w-4" />
+                    Resume
+                  </Button>
+                </Link>
+              </div>
+            </div>
 
-  <Link href="mailto:prakarshsrivastava2004@gmail.com">
-    <Button variant="outline" size="icon" aria-label="Email">
-      <Mail className="h-4 w-4" />
-    </Button>
-  </Link>
+            <div className="target-roles-card rounded-md border bg-card/85 p-6 shadow-lg">
+              <h2 className="mb-3 text-xl font-bold tracking-tight">Target roles</h2>
+              <p className="mb-5 text-[0.95rem] leading-6 text-muted-foreground">
+                Strong fit for junior Java backend roles, with active work across FastAPI, Redis, PostgreSQL, and
+                production-style deployments.
+              </p>
+              <ul className="space-y-3 text-[0.95rem]">
+                <li>
+                  <span className="font-medium text-foreground">Junior Java Backend Engineer</span>
+                  <span className="text-muted-foreground"> (Spring Boot)</span>
+                </li>
+                <li>Backend Software Engineer</li>
+                <li>Junior Software Engineer</li>
+                <li>Data Engineer</li>
+              </ul>
+            </div>
 
-  <Link href="/prakarsh_resume-2.pdf" download>
-    <Button variant="outline" className="flex items-center gap-2 whitespace-nowrap">
-      <Download className="h-4 w-4" />
-      Download Resume
-    </Button>
-  </Link>
-</div>
+            <div className="hero-stat-strip grid gap-3 rounded-md border bg-background/70 p-5 shadow-sm backdrop-blur md:grid-cols-3 lg:col-span-2">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Focus</p>
+                <p className="mt-1 text-sm font-medium">APIs, state, data systems</p>
+              </div>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Core stack</p>
+                <p className="mt-1 text-sm font-medium">Java, FastAPI, PostgreSQL</p>
+              </div>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">Recent work</p>
+                <p className="mt-1 text-sm font-medium">Cardle, AsteroidWatch, Chatly</p>
+              </div>
+            </div>
 
-      </div>
+            <div className="hero-ambient-statement lg:col-span-2">
+              <span />
+              <p>Currently building production-grade backend systems</p>
+              <span />
+            </div>
+          </div>
+          <ScrollArrow />
+        </section>
 
-      {/* Job roles card */}
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 p-5 bg-card rounded-lg shadow-lg hidden md:block max-w-xs">
-        <h2 className="text-lg font-bold tracking-tight mb-2 text-left">
-          Target roles
-        </h2>
+        <NowSection />
 
-        <p className="text-sm text-muted-foreground mb-3 text-left">
-          Strong fit for junior Java backend roles. Also open to backend software & data roles.
-        </p>
+        <section id="projects" className="py-12 md:py-24 lg:py-28">
+          <div className="container mx-auto max-w-screen-xl px-4">
+            <div className="mb-10 max-w-3xl">
+              <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-[0.22em] text-primary">
+                Featured Work
+              </p>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Backend-heavy case studies</h2>
+              <p className="mt-4 text-muted-foreground">
+                Four projects with stronger architecture stories, live deployments, and clearer engineering tradeoffs.
+              </p>
+            </div>
 
-        <ul className="list-disc list-outside text-gray-500 dark:text-gray-400 text-left pl-5 space-y-1">
-          <li>
-            <span className="font-medium text-foreground">Junior Java Backend Engineer</span>
-            <span className="text-muted-foreground"> (Spring Boot)</span>
-          </li>
-          <li>Backend Software Engineer</li>
-          <li>Junior Software Engineer</li>
-          <li>Data Engineer</li>
-        </ul>
-      </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {featuredProjects.map((project) => (
+                <ProjectCard
+                  key={project.slug}
+                  title={project.shortTitle ?? project.title}
+                  description={project.oneLine}
+                  image={project.image}
+                  link={project.githubLink}
+                  liveLink={project.liveLink}
+                  tags={project.technologies.slice(0, 5)}
+                  impact={project.impact}
+                  detailsLink={`/projects/${project.slug}`}
+                />
+              ))}
+            </div>
 
-      <ScrollArrow />
-    </div>
-  </section>
+            <div className="mt-14">
+              <h3 className="mb-4 text-xl font-semibold">Other projects</h3>
+              <div className="divide-y rounded-md border bg-card/80">
+                {otherProjects.map((project) => (
+                  <div key={project.slug} className="grid gap-3 p-4 md:grid-cols-[1fr_auto] md:items-center">
+                    <div>
+                      <h4 className="font-semibold">{project.title}</h4>
+                      <p className="mt-1 text-sm text-muted-foreground">{project.oneLine}</p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {project.technologies.slice(0, 4).map((tech) => (
+                          <span key={tech} className="rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="sm" className="gap-2 bg-transparent">
+                        <Github className="h-4 w-4" />
+                        GitHub
+                      </Button>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <section id="editorial" className="py-12 md:py-24 lg:py-32 bg-secondary/30">
-          <div className="container max-w-screen-xl mx-auto px-4">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 text-center">
+        <LeetCodeActivity />
+        <GithubStats />
+
+        <section id="editorial" className="bg-secondary/30 py-12 md:py-24 lg:py-28">
+          <div className="container mx-auto max-w-screen-xl px-4">
+            <h2 className="mb-4 text-center text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Editorial & Contributions
             </h2>
-            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Showcasing my contributions to publications and organizations where I've been recognized for my work.
+            <p className="mx-auto mb-12 max-w-2xl text-center text-muted-foreground">
+              Publications, research, and organizations where I contributed engineering or editorial work.
             </p>
-            <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-              <EditorialCard
-                title="Research Assistant – Object Detection"
-                organization="University of Debrecen – Faculty of Informatics"
-                role="Research Assistant"
-                description="Created and validated a dataset of 5,000+ annotated satellite and microscopy images to support training of YOLO-based object detection models. Integrated curated datasets into automated detection pipelines for machine learning experiments."
-                link="#"
-                year="April 2025 – June 2025"
-                highlights={[
-                  "Created and validated a dataset of 5,000+ annotated satellite and microscopy images",
-                  "Supported training of YOLO-based object detection models",
-                  "Integrated curated datasets into automated detection pipelines",
-                ]}
-              />
-              <EditorialCard
-                title="Hungarian Startup University Program"
-                organization="University of Debrecen"
-                role="Software Developer"
-                description="Developed a real-time chat application with a secure backend, implementing JWT-based authentication and OAuth for session management, and designing a scalable publish–subscribe architecture using WebSockets. Improved system performance and reliability by integrating Redis caching. Worked within an Agile/Scrum environment."
-                link="https://github.com/PrakarshSrivastav/ChatApp-WebSocket"
-                year="Mar 2025 – Sep 2025"
-                highlights={[
-                  "Developed a real-time chat application with a secure backend (JWT, OAuth, WebSockets)",
-                  "Improved system performance and reliability with Redis caching",
-                  "Contributed in an Agile/Scrum environment (sprint planning, code reviews, iterative feature delivery)",
-                ]}
-              />
-              <EditorialCard
-                title="Flying High Magazine"
-                organization="Indian Language School"
-                role="Developer & Editorial Team Member"
-                description="Recognized as part of the core development team that created the first-ever digital edition of the school magazine during the COVID-19 pandemic. Contributed to over 20,000 lines of code and 400+ man-hours of work."
-                link="https://ils-magazine.github.io/Flying_High/HomePage/Editorial.html"
-                year="2020-2021"
-                highlights={[
-                  "Part of the 5-member student development team",
-                  "Contributed to coding and proofreading",
-                  "Helped create the historical digital edition",
-                ]}
-              />
-              <EditorialCard
-                title="Aid Global Foundation"
-                organization="Aid Global NGO"
-                role="Backend Developer - Admin Dashboard"
-                description="Contributed to the development of the Aid Global Foundation website, focusing on backend development for the admin dashboard to help manage and streamline organizational operations."
-                link="https://www.aidglobal.ngo/developers"
-                year="2025"
-                highlights={[
-                  "Backend developer for admin dashboard",
-                  "Open source contribution",
-                  "NGO platform development",
-                ]}
-              />
+            <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
+              {editorials.map((editorial) => (
+                <EditorialCard key={`${editorial.title}-${editorial.year}`} {...editorial} />
+              ))}
             </div>
           </div>
         </section>
 
-        <section id="projects" className="py-12 md:py-24 lg:py-32">
-          <div className="container max-w-screen-xl mx-auto px-4">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">Projects</h2>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-              <ProjectCard
-                title="Expense-o-meter"
-                description="A personal finance tracking application that helps users monitor expenses, create budgets, and visualize spending patterns."
-                image="/images/expense-o-meter.jpeg"
-                link="https://github.com/PrakarshSrivastav/expense-o-meter"
-                tags={["Java", "SpringBoot", "PostGreSQL", "JPA"]}
-                detailsLink="/projects/expense-o-meter"
-              />
-              <ProjectCard
-                title="VedAI – AI Chatbot on Bhagavad Gita"
-                description="An AI-powered chatbot using RAG model and FAISS vector database for efficient retrieval from Bhagavad Gita teachings with persistent chat history."
-                image="/ai-chatbot-interface-with-ancient-indian-spiritual.jpg"
-                link="https://github.com/PrakarshSrivastav/VedAI"
-                tags={["Python", "FastAPI", "RAG", "FAISS", "NLP"]}
-                detailsLink="/projects/vedai"
-              />
-              <ProjectCard
-                title="Chatly"
-                description="A real-time chat application built with Spring Boot and WebSockets, featuring persistent connections and user activity tracking."
-                image="/images/chatly.png"
-                link="https://github.com/PrakarshSrivastav/ChatApp-WebSocket"
-                tags={["Spring Boot", "WebSockets", "DragonflyDB", "Redis", "Docker"]}
-                detailsLink="/projects/chatly"
-              />
-              <ProjectCard
-                title="Premier League Player Stats App"
-                description="A Spring Boot web application for analyzing Premier League player statistics, designed for Fantasy Premier League enthusiasts to make data-driven decisions."
-                image="/images/premier-league.png"
-                link="https://github.com/PrakarshSrivastav/PremBackYard"
-                tags={["Spring Boot", "PostgreSQL", "Thymeleaf", "HTML/CSS", "JavaScript"]}
-                detailsLink="/projects/premier-league-stats"
-              />
-              <ProjectCard
-                title="Resume Screening Application"
-                description="An AI-powered resume screening system that automates resume categorization, job recommendation, and information extraction using NLP."
-                image="/images/ats-scanner.png"
-                link="https://github.com/PrakarshSrivastav/NLP_PROJECT"
-                tags={["Python", "Flask", "NLP", "HTML/CSS", "Machine Learning"]}
-                detailsLink="/projects/resume-screening"
-              />
-            </div>
-          </div>
-        </section>
-
-        <section className="py-12 md:py-24 lg:py-32">
-          <div className="container max-w-screen-xl mx-auto px-4">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
-              Tech Stack
-            </h2>
+        <section className="py-12 md:py-24 lg:py-28">
+          <div className="container mx-auto max-w-screen-xl px-4">
+            <h2 className="mb-12 text-center text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Tech Stack</h2>
             <TechStack />
           </div>
         </section>
 
-        <section id="contact" className="py-12 md:py-24 lg:py-32">
-          <div className="container max-w-screen-xl mx-auto px-4">
+        <section id="contact" className="py-12 md:py-24 lg:py-28">
+          <div className="container mx-auto max-w-screen-xl px-4">
             <div className="mx-auto max-w-2xl">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
+              <h2 className="mb-12 text-center text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                 Get in Touch
               </h2>
               <ContactForm />
@@ -265,16 +232,11 @@ export default function Page() {
       </main>
 
       <footer className="border-t">
-        <div className="container max-w-screen-xl mx-auto flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4">
-          <p className="text-xs text-gray-500 dark:text-gray-400">© 2024 Prakarsh Srivastava. All rights reserved.</p>
-          <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-            <Link className="text-xs hover:underline underline-offset-4" href="#">
-              Terms of Service
-            </Link>
-            <Link className="text-xs hover:underline underline-offset-4" href="#">
-              Privacy
-            </Link>
-          </nav>
+        <div className="container mx-auto flex w-full max-w-screen-xl shrink-0 flex-col gap-3 px-4 py-6 sm:flex-row sm:items-center">
+          <p className="text-xs text-muted-foreground">© 2026 Prakarsh Srivastava. All rights reserved.</p>
+          <div className="sm:ml-auto">
+            <VisitCounter />
+          </div>
         </div>
       </footer>
     </div>

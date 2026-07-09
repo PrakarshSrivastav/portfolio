@@ -9,7 +9,7 @@ interface EditorialCardProps {
   organization: string
   role: string
   description: string
-  link: string
+  link?: string
   year: string
   highlights: string[]
 }
@@ -43,14 +43,16 @@ export default function EditorialCard({
             </div>
           ))}
         </div>
-        <div className="mt-auto">
-          <Link href={link} target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="sm" className="w-full bg-transparent">
-              View Editorial
-              <ExternalLink className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
+        {link && link !== "#" && (
+          <div className="mt-auto">
+            <Link href={link} target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="sm" className="w-full bg-transparent">
+                View Editorial
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        )}
       </CardContent>
     </Card>
   )

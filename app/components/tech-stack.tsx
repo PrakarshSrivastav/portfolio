@@ -1,41 +1,12 @@
 import { Card } from "@/components/ui/card"
-
-const technologies = [
-  {
-    category: "Core Languages",
-    skills: ["Java", "Python", "JavaScript"],
-  },
-  {
-    category: "Backend Frameworks",
-    skills: ["Spring Boot", "Spring Security", "Node.js"],
-  },
-  {
-    category: "Databases & Data",
-    skills: ["PostgreSQL", "MySQL", "Oracle"],
-  },
-  {
-    category: "DevOps & Tooling",
-    skills: ["Git", "Docker", "Maven", "Postman", "pgAdmin", "Jira"],
-  },
-  {
-    category: "Spoken Languages",
-    skills: [
-      "English (Fluent)",
-      "Hindi (Native)",
-      "French (Intermediate)",
-      "Hungarian (Beginner)",
-      "German (Beginner)"
-    ],
-  },
-];
-
+import { technologies } from "@/lib/tech-stack"
 
 export default function TechStack() {
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {technologies.map((tech) => (
         <Card key={tech.category} className="p-6">
-          <h3 className="text-lg font-semibold mb-4">{tech.category}</h3>
+          <h3 className="mb-4 text-lg font-semibold">{tech.category}</h3>
           <div className="flex flex-wrap gap-2">
             {tech.skills.map((skill) => (
               <span

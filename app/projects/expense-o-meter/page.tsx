@@ -2,8 +2,16 @@ import ProjectDetail from "@/app/components/project-detail"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { getProjectBySlug } from "@/lib/projects"
+import { notFound } from "next/navigation"
 
 export default function ExpenseOMeterPage() {
+  const project = getProjectBySlug("expense-o-meter")
+
+  if (!project) {
+    notFound()
+  }
+
   return (
     <div className="container max-w-screen-xl mx-auto py-12 px-4">
       <div className="mb-6">
@@ -13,20 +21,7 @@ export default function ExpenseOMeterPage() {
           </Button>
         </Link>
       </div>
-      <ProjectDetail
-        title="Expense-o-meter"
-        period="October 2024 - December 2024"
-        description="A comprehensive personal finance tracking application that helps users monitor expenses, create budgets, and visualize spending patterns to make better financial decisions."
-        features={[
-          "Expense tracking with categorization and tagging system for detailed financial analysis",
-          "Interactive dashboards with charts and graphs to visualize spending patterns over time",
-          "Budget creation and management with alerts for overspending in specific categories",
-          "Recurring expense tracking and bill payment reminders to avoid late fees",
-        ]}
-        technologies={["Java", "SpringBoot", "PostGreSQL", "JPA"]}
-        githubLink="https://github.com/PrakarshSrivastav/ExpenseTracker"
-        image="/images/expense-o-meter.jpeg"
-      />
+      <ProjectDetail project={project} />
     </div>
   )
 }

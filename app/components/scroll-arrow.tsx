@@ -3,7 +3,12 @@
 import { ChevronDown } from "lucide-react"
 import { useEffect, useState } from "react"
 
-export default function ScrollArrow() {
+interface ScrollArrowProps {
+  targetId?: string
+  className?: string
+}
+
+export default function ScrollArrow({ targetId = "now", className = "" }: ScrollArrowProps) {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
@@ -23,16 +28,16 @@ export default function ScrollArrow() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const scrollToEditorial = () => {
-    document.getElementById("editorial")?.scrollIntoView({ behavior: "smooth" })
+  const scrollToTarget = () => {
+    document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" })
   }
 
   if (!visible) return null
 
   return (
     <div
-      className="fixed left-1/2 bottom-8 -translate-x-1/2 z-50 cursor-pointer"
-      onClick={scrollToEditorial}
+      className={`absolute left-1/2 bottom-8 z-20 -translate-x-1/2 cursor-pointer ${className}`}
+      onClick={scrollToTarget}
       aria-label="Scroll down"
     >
       <div className="flex flex-col items-center animate-bounce">
