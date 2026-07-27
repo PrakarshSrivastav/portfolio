@@ -15,6 +15,7 @@ import { editorials } from "@/lib/editorials"
 import { featuredProjects, otherProjects } from "@/lib/projects"
 import { Download, Github, Linkedin, Mail } from "lucide-react"
 import Link from "next/link"
+import PortfolioChat from "@/app/components/portfolio-chat"
 
 const heroSnippets = [
   { text: 'api.get("/health")', className: "hero-code-1" },
@@ -124,6 +125,11 @@ export default function Page() {
                 <p className="mt-1 text-sm font-medium">Cardle, AsteroidWatch, Chatly</p>
               </div>
             </div>
+            <div className="lg:col-span-2">
+              <PortfolioChat />
+            </div>
+
+            <div className="hero-ambient-statement lg:col-span-2"></div>
 
             <div className="hero-ambient-statement lg:col-span-2">
               <span />
